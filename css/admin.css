@@ -1,0 +1,31 @@
+table{
+	border-collapse:separate;
+	font-size:12px;
+	border-spacing:1px;
+}
+
+table tr td{
+	padding-left:4px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-right:4px;
+}
+
+.titlefield
+{
+	background-color:#8BAEEF;
+}
+
+#dialog_detail
+{
+	width:100%;
+	height: 100%;
+	overflow:hidden;
+}
+
+#iframe_detail
+{
+	border: none;
+	width: 100%;
+	height: 100%;
+}
