@@ -68,5 +68,12 @@ class DB
 		//echo $sql;
 		mysql_query($sql) or die(mysql_error());
 	}
+	
+	function getWeekMeal($week_start, $week_end){
+		$sql = "SELECT L1.*, L2.cust_id L2_cust_id FROM mealmanage_tbl L1 LEFT JOIN mealmanage_tbl L2 ON L1.order_date=L2.order_date AND L2.order_type='2' WHERE L1.order_type='1' AND L1.order_date between '$week_start' AND '$week_end' ORDER BY L1.order_date";
+		die($sql);
+		$query = mysql_query($sql) or die(mysql_error());
+		return $query;
+	}
 }
 ?>

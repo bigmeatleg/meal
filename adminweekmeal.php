@@ -12,6 +12,9 @@
 </head>
 
 <body>
+<?php
+include('common.php');
+?>
 <h1>每週餐點管理</h1>
 <div>
 	<table width="100%">
@@ -30,7 +33,7 @@
 			$yearnum = date('Y');
 			for($i = 0 ; $i < 10; $i++){
 				echo "<tr>";
-				echo "<td><a href='".$yearnum."-".($weeknum + $i)."'>";
+				echo "<td><a href='y=".$yearnum."&w=".($weeknum + $i)."'>";
 				echo $yearnum. "年-第 ".($weeknum + $i)." 週<br>";
 				$result = getStartAndEndDate($weeknum+$i, $yearnum);
 				echo date('m-d', strtotime($result['week_start']))." - ".date('m-d', strtotime($result['week_end']));
@@ -45,30 +48,12 @@
 			?>
       </table> 
       </td>
-      <td width="84%">
-      <iframe width="100% id="weekmeal" namd="weekmeal" src="" style="border:none"></iframe>
+      <td width="84%" valign="top">
+      <iframe width="100%" id="weekmeal" name="weekmeal" src="" style="border:none"></iframe>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
-
-<?php
-function getStartAndEndDate($week, $year)
-{
-	$dto = new DateTime();
-  $dto->setISODate($year, $week);
-  $ret['week_start'] = $dto->format('Y-m-d');
-  $dto->modify('+6 days');
-  $ret['week_end'] = $dto->format('Y-m-d');
-  return $ret;
-}
-
-function getIsoWeeksInYear($year) {
-    $date = new DateTime;
-    $date->setISODate($year, 53);
-    return ($date->format("W") === "53" ? 53 : 52);
-}
-?>
 </body>
 </html>
