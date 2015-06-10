@@ -40,7 +40,7 @@
 	 include('dbclass.php');
 	 $db = new DB();
 	 $result = $db->getFoodByID($_GET['fid']);
-	 $rs = mysql_fetch_array($result);
+	 $rs = mysqli_fetch_array($result);
 	 echo "$('#food_name').attr('value', '". $rs['food_name']."');";
 	 echo "$('#food_price').attr('value', '". $rs['food_price']."');";
 	 echo "$('#food_desc').text('".$rs['food_desc']."');";

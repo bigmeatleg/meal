@@ -48,6 +48,7 @@ $(document).ready(function(e) {
 	$('#btnAdd').click(function(e){
 		e.preventDefault();
 		
+		$('#iframe_detail').attr('src', 'detailcust.php');
 		$('#dialog_detail')
 		.dialog({
 			autoOpen: false,
@@ -62,13 +63,10 @@ $(document).ready(function(e) {
 				}
 			}],
 			title:'新增資料',
-			
 			close: function(){
 				$('#iframe_detail').attr('src', '');
 				window.location.reload();
 			},
 		}).dialog('open');
-	
-		$('#iframe_detail').attr('src', 'detailcust.php');
 	});
 });

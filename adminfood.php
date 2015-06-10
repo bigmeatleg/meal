@@ -33,9 +33,9 @@
 		include('dbclass.php');
 		$db = new DB();
 		$result = $db->getCustList();
-		if(mysql_num_rows($result)){
+		if(mysqli_num_rows($result)){
 			echo "<table id='cust_list' name='cust_list'>";
-			while($rs = mysql_fetch_array($result)){
+			while($rs = mysqli_fetch_array($result)){
 				echo "<tr><td><a class='mealclass' href='adminmeal.php?id=".$rs['cust_id']."'>".$rs['cust_name']."</a></td></tr>";
 			}
 			echo "</table>";

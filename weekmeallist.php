@@ -19,6 +19,8 @@ $aryWeekName = array("星期一", "星期二", "星期三", "星期四", "星期
 
 $db = new DB();
 $result = $db->getWeekMeal($wd['week_start'], $wd['week_end']);
+
+$aryDate = parseMeal($result);
 ?>
 <div>
 	<form id="stdform" name="stdform" method="post" action="">

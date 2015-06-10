@@ -41,8 +41,8 @@ if(isset($_GET['id'])){
 	include('dbclass.php');
 	$db = new DB();
 	$result = $db->getCustByID($_GET['id']);
-	if(mysql_num_rows($result)){
-		$rs = mysql_fetch_array($result);
+	if(mysqli_num_rows($result)){
+		$rs = mysqli_fetch_array($result);
 		echo "<script>";
 		echo "$('#cust_id').attr('value', '".$rs['cust_id']."');";
 		echo "$('#cust_name').attr('value', '".$rs['cust_name']."');";

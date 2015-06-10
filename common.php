@@ -14,4 +14,14 @@ function getIsoWeeksInYear($year) {
     $date->setISODate($year, 53);
     return ($date->format("W") === "53" ? 53 : 52);
 }
+
+function parseMeal($query){
+	if(!mysqli_num_rows($query)) return;
+	$aryRet = array();
+	while($rs = mysqli_fetch_array($query)){
+		$aryRet[$rs['order_date']] = array($rs['cust_id'], $rs['L2_cust_id']);
+	}
+		
+	return $aryRet;
+}
 ?>

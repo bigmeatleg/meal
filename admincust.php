@@ -39,8 +39,8 @@ $obj = new DB();
  <tbody>
  <?php 
  $result = $obj->getCustList();
- if(mysql_num_rows($result)){
-	 while($row = mysql_fetch_array($result)){
+ if(mysqli_num_rows($result)){
+	 while($row = mysqli_fetch_array($result)){
 		 echo "<tr>";
 		 echo "<td>".$row['cust_id']."</td>";
 		 echo "<td>".$row['cust_name']."</td>";
@@ -56,8 +56,8 @@ $obj = new DB();
  </tbody>
 </table>
 </div>
-<div id="dialog_detail">
-	<iframe id="iframe_detail"></iframe>
+<div id="dialog_detail" name="dialog_detail">
+	<iframe id="iframe_detail" name="iframe_detail" src=""></iframe>
 </div>
 </body>
 </html>
