@@ -49,7 +49,7 @@ include('common.php');
       </table> 
       </td>
       <td width="84%" valign="top">
-      <iframe width="100%" id="weekmeal" name="weekmeal" src="" style="border:none"></iframe>
+      <iframe width="100%" height="100%" id="weekmeal" name="weekmeal" src="" style="border:none"></iframe>
       </td>
     </tr>
     </tbody>

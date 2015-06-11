@@ -16,6 +16,16 @@ table tr td{
 	background-color:#8BAEEF;
 }
 
+.rowtitlefield
+{
+	background-color:rgba(240,205,153,1.00);
+}
+
+thead tr td
+{
+	background-color:#8BAEEF;
+}
+
 #dialog_detail
 {
 	width:100%;

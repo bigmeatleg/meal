@@ -19,19 +19,26 @@ class DB
 	}
 	
 	function getCustList(){
-		global $link;
-		//$sql = "SET NAMES 'utf8'";
-		//$query = mysql_query($sql) or die(mysql_error());
-		
 		$sql = "SELECT * FROM customer_tbl ORDER BY cust_name";
 		$query = mysqli_query($this->link, $sql) or die('Error:'. mysqli_error($this->link));
 		return $query;
 	}
 	
-	function getCustByID($id){
-		//$sql = "SET NAMES 'utf8'";
-		//$query = mysql_query($sql) or die(mysql_error());
+	function getCustList2Array(){
+		$sql = "SELECT cust_id, cust_name FROM customer_tbl ORDER BY cust_name";
+		$query = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
 		
+		if(!mysqli_num_rows($query)) return;
+		
+		$aryRet = array();
+		while($rs = mysqli_fetch_array($query)){
+			$aryRet[$rs['cust_name']] = $rs['cust_id'];
+		}
+		
+		return $aryRet;
+	}
+	
+	function getCustByID($id){
 		$sql = "SELECT * FROM customer_tbl WHERE cust_id='$id'";
 		$query = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
 		return $query;
@@ -85,6 +92,20 @@ class DB
 		$sql = "SELECT L1.*, L2.cust_id L2_cust_id FROM mealmanage_tbl L1 LEFT JOIN mealmanage_tbl L2 ON L1.order_date=L2.order_date AND L2.order_type='2' WHERE L1.order_type='1' AND L1.order_date between '$week_start' AND '$week_end' ORDER BY L1.order_date";
 		$query = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
 		return $query;
+	}
+	
+	function addMealByArray($aryDate, $aryType, $aryCust){
+		$sql = "REPLACE INTO mealmanage_tbl (order_date, order_type, cust_id) VALUE (?, ?, ?)";
+		$stmt = $this->link->prepare($sql);
+		$stmt->bind_param('sss', $order_date, $order_type, $cust_id);
+		for($i = 0; $i < count($aryDate); $i ++){
+			$order_date = $aryDate[$i];
+			$order_type = $aryType[$i];
+			$cust_id = $aryCust[$i];
+			//echo "data: $order_date - $order_type - $cust_id'<br>";
+			$stmt->execute();
+		}
+		$stmt->close();
 	}
 }
 ?>
