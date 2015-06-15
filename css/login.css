@@ -1,0 +1,24 @@
+body{
+	padding-top:20px;
+}
+
+table{
+	border:solid 1px #898080;
+}
+
+thead tr td{
+	border-bottom:solid 1px #898080;
+}
+
+tbody tr td{
+	padding-left: 10px;
+}
+
+button{
+	width: 120px;
+	height: 40px;
+}
+
+input{
+	width: 90%;
+}

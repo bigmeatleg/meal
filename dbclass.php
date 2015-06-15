@@ -107,5 +107,56 @@ class DB
 		}
 		$stmt->close();
 	}
+	
+	function getManList(){
+		$sql = "SELECT * FROM user_tbl ORDER BY user_id";
+		$query = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+		return $query;
+	}
+	
+	function des_encrypt($string) {
+    $size = mcrypt_get_block_size('des', 'ecb');
+    $pad = $size - (strlen($string) % $size);
+    $string = $string . str_repeat(chr($pad), $pad);
+    $td = mcrypt_module_open('des', '', 'ecb', '');
+    $iv = @mcrypt_create_iv (mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
+    @mcrypt_generic_init($td, DB_PWD, $iv);
+    $data = mcrypt_generic($td, $string);
+    mcrypt_generic_deinit($td);
+    mcrypt_module_close($td);
+    $data = base64_encode($data);
+    return $data;
+	}
+
+	function des_decrypt($string) {
+    $string = base64_decode($string);
+    $td = mcrypt_module_open('des', '', 'ecb', '');
+    $iv = @mcrypt_create_iv(mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
+    $ks = mcrypt_enc_get_key_size($td);
+    @mcrypt_generic_init($td, DB_PWD, $iv);
+    $decrypted = mdecrypt_generic($td, $string);
+    mcrypt_generic_deinit($td);
+    mcrypt_module_close($td);
+    $pad = ord($decrypted{strlen($decrypted) - 1});
+    if($pad > strlen($decrypted)) {
+        return false;
+    }
+    if(strspn($decrypted, chr($pad), strlen($decrypted) - $pad) != $pad) {
+        return false;
+    }
+    $result = substr($decrypted, 0, -1 * $pad);
+    return $result;
+	}
+	
+	function randomPassword() {
+    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+    $pass = array(); //remember to declare $pass as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+    return implode($pass); //turn the array into a string
+	}
 }
 ?>
