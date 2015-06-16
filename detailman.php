@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="jquery/Validation-Engine/css/validationEngine.jquery.css">
 <script src="js/detailman.js"></script>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Detail man</title>
 </head>
 
 <body>
@@ -30,9 +30,12 @@
   </tr>
   <tr>
   	<td>密碼</td>
-    <td colspan="3"><input type="text" id="user_password" name="user_password"></td>
+    <td colspan="3"><input type="text" id="user_password" name="user_password">
+    <button id="btnRandPWD" name="btnRandPWD" style="width:100px; height: 24px">隨機密碼</button>
+    </td>
   </tr>
 </table>
+<input type="hidden" id="action" name="action" value="">
 </form>
 </body>
 </html>

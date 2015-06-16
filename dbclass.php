@@ -114,6 +114,19 @@ class DB
 		return $query;
 	}
 	
+	function addMan($user_id, $user_name, $user_password, $user_department, $user_email){
+		$sql = "SELECT * FROM user_tbl WHERE user_id='$user_id'";
+		$query = mysqli_query($this->link, $sql);
+		if(mysqli_num_rows($query)){
+			return -1;
+		}
+		
+		$user_password = $this->des_encrypt($user_password);
+		$sql = "INSERT INTO user_tbl SET user_id='$user_id', user_name='$user_name', user_password='$user_password', user_email='$user_email', user_department='$user_department'";
+		mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+		echo 0;
+	}
+	
 	function des_encrypt($string) {
     $size = mcrypt_get_block_size('des', 'ecb');
     $pad = $size - (strlen($string) % $size);

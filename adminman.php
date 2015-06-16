@@ -41,7 +41,7 @@ $db = new DB();
 		echo "<tr>";
 		echo "<td>".$rs['user_name']."</td>";
 		echo "<td>".$rs['user_id']."</td>";
-		echo "<td>".$rs['user_partment']."</td>";
+		echo "<td>".$rs['user_department']."</td>";
 		echo "<td>".$rs['user_email']."</td>";
 		echo "<td>".$rs['user_password']."</td>";
 		echo "</tr>";
