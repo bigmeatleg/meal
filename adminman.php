@@ -27,8 +27,8 @@ $db = new DB();
 <table>
 	<thead>
 	<tr>
-  	<td>姓名</td>
-    <td>登入ID</td>
+  	<td>登入ID</td>
+    <td>姓名</td>
     <td>部門</td>
     <td>Email</td>
     <td>密碼</td>
@@ -39,8 +39,8 @@ $db = new DB();
 	$result = $db->getManList();
 	while($rs = mysqli_fetch_array($result)){
 		echo "<tr>";
-		echo "<td>".$rs['user_name']."</td>";
 		echo "<td>".$rs['user_id']."</td>";
+		echo "<td>".$rs['user_name']."</td>";
 		echo "<td>".$rs['user_department']."</td>";
 		echo "<td>".$rs['user_email']."</td>";
 		echo "<td>".$rs['user_password']."</td>";

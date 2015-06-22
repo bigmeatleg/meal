@@ -127,6 +127,12 @@ class DB
 		echo 0;
 	}
 	
+	function getManByID($user_id){
+		$sql = "SELECT * FROM user_tbl WHERE user_id='$user_id'";
+		$query = mysqli_query($this->link, $sql);
+		return $query;
+	}
+	
 	function des_encrypt($string) {
     $size = mcrypt_get_block_size('des', 'ecb');
     $pad = $size - (strlen($string) % $size);
