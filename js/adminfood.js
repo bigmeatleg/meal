@@ -1,10 +1,10 @@
 $(document).ready(function(e) {
   $('#admin_list thead tr td').addClass('titlefield');
 	
-	$('a.mealclass').button().click(function(e){
+	$('li').click(function(e){
 		e.preventDefault();
 		$('#showadd').attr('style', 'visibility:none');
-		var meal_link = $(this).attr('href');
+		var meal_link = $('a', this).attr('href');
 		$('#meal_list').attr('src', meal_link);
 		
 		var nLocation = meal_link.indexOf('=') + 1;
@@ -13,6 +13,8 @@ $(document).ready(function(e) {
 		
 		$('#meal_add').attr('href', 'detailmeal.php?id=' + cust_id);
 	});
+	
+	$('#menu').menu();
 	
 	$('a#meal_add')
 	.button()
