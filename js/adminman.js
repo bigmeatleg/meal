@@ -40,12 +40,14 @@ $(document).ready(function(e) {
 			buttons:[{
 				text:'修改',
 				click:function(){
+					$('#iframe_detail').contents().find('#user_id').prop('disabled', false);
 					$('#iframe_detail').contents().find('#action').attr('value', 'update');
 					$('#iframe_detail')[0].contentWindow.FormSubmit();
 				}
 			},{
 				text:'刪除',
 				click:function(){
+					$('#iframe_detail').contents().find('#user_id').prop('disabled', false);
 					$('#iframe_detail').contents().find('#action').attr('value', 'delete');
 					$('#iframe_detail')[0].contentWindow.FormSubmit();
 				}

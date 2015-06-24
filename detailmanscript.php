@@ -15,6 +15,15 @@ if(isset($_POST['action'])){
 			echo "</script>	";
 		}
 		echo "新增資料";
+	} else if($_POST['action'] == 'update'){
+		$user_id = $_POST['user_id'];
+		$user_name = $_POST['user_name'];
+		$user_department = $_POST['user_department'];
+		$user_email = $_POST['user_email'];
+		$user_password = $_POST['user_password'];
+		$db = new DB();
+		$db->updateManByID($user_id, $user_name, $user_password, $user_email, $user_department);
+	} else if($_POST['action'] == 'delete'){
 	}
 }
 ?>

@@ -44,7 +44,7 @@ if(isset($_GET['id'])){
 	$query = $db->getManByID($_GET['id']);
 	$rs = mysqli_fetch_array($query);
 	echo "<script language='javascript'>";
-	echo "$('#user_id').attr('value', '".$rs['user_id']."').prop('disable', true);";
+	echo "$('#user_id').attr('value', '".$rs['user_id']."').prop('disabled', true);";
 	echo "$('#user_name').attr('value', '".$rs['user_name']."');";
 	echo "$('#user_department').attr('value', '".$rs['user_department']."');";
 	echo "$('#user_email').attr('value', '".$rs['user_email']."');";

@@ -129,7 +129,25 @@ class DB
 	
 	function getManByID($user_id){
 		$sql = "SELECT * FROM user_tbl WHERE user_id='$user_id'";
-		$query = mysqli_query($this->link, $sql);
+		$query = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));;
+		return $query;
+	}
+	
+	function updateManByID($user_id, $user_name, $user_password, $user_email, $user_department){
+		$user_password = $this->des_encrypt($user_password);
+		$sql = "UPDATE user_tbl SET user_name='$user_name', user_password='$user_password', user_email='$user_email', user_department='$user_department' WHERE user_id='$user_id'";
+		mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+	}
+	
+	function deleteManByID($user_id){
+		$sql = "DELETE FROM user_tbl WHERE user_id='$user_id'";
+		mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+	}
+	
+	function Login($user_id, $user_password){
+		$user_password = $this->des_encrypt($user_password);
+		$sql = "SELECT count(*) success FROM user_tbl WHERE user_id='$user_id' AND user_password='$user_password'";
+		$query = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
 		return $query;
 	}
 	
