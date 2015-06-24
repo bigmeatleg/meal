@@ -1,7 +1,12 @@
 $(document).ready(function(e) {
-  $('a').button().click(function(e){
+  $('li').click(function(e){
 		e.preventDefault();
-		var param = $(this).attr('href');
+		var param = $('a', this).attr('href');
 		$('#weekmeal').attr('src', 'weekmeallist.php?' + param);
+	});
+	
+	$('a').attr('style','text-decoration:none');
+	$('#menu').menu({
+		inline: true,
 	});
 });

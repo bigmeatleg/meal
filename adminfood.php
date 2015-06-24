@@ -34,11 +34,16 @@
 		$db = new DB();
 		$result = $db->getCustList();
 		if(mysqli_num_rows($result)){
-			echo "<table id='cust_list' name='cust_list'>";
+			/*echo "<table id='cust_list' name='cust_list'>";
 			while($rs = mysqli_fetch_array($result)){
 				echo "<tr><td><a class='mealclass' href='adminmeal.php?id=".$rs['cust_id']."'>".$rs['cust_name']."</a></td></tr>";
 			}
-			echo "</table>";
+			echo "</table>";*/
+			echo "<ul id='menu'>";
+			while($rs = mysqli_fetch_array($result)){
+				echo "<li><a class='mealclass' href='adminmeal.php?id=".$rs['cust_id']."'>".$rs['cust_name']."</a></li>";
+			}
+			echo "</ul>";
 		}
 		?>
     </td>

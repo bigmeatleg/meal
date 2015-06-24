@@ -1,4 +1,5 @@
 $(document).ready(function(e) {
+<<<<<<< HEAD
 	$('#stdform').validationEngine('attach', {
 		promptPosition: 'topLeft',
 		scroll: false,
@@ -11,4 +12,7 @@ $(document).ready(function(e) {
     e.preventDefault();
 		$('#stdform').submit();
   });  
+=======
+	  
+>>>>>>> 364c2630966cda80f85cd104320ca9d95e3176fc
 });

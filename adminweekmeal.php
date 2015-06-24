@@ -26,9 +26,23 @@ include('common.php');
     </thead>
     <tbody>
     <tr>
-    	<td width="16%">
-      <table id="week_list">
+    	<td width="16%" valign="top">
       <?php
+			echo "<ul id='menu'>";
+			$weeknum = date('W');
+			$yearnum = date('Y');
+			for($i = 0; $i < 10; $i ++){
+				echo "<li>";
+				echo "<a href='y=".$yearnum."&w=".($weeknum + $i)."'>";
+				echo $yearnum. ".".($weeknum + $i)." (";
+				$result = getStartAndEndDate($weeknum+$i, $yearnum);
+				echo date('m-d', strtotime($result['week_start']))." - ".date('m-d', strtotime($result['week_end']));
+				echo ")</a>";
+				echo "</li>";
+			}
+			echo "</ul>";
+			/*
+			echo "<table id='week_list'>";
 			$weeknum = date('W');
 			$yearnum = date('Y');
 			for($i = 0 ; $i < 10; $i++){
@@ -45,11 +59,12 @@ include('common.php');
 					$weeknum = ($i) *(-1);
 				}
 			}
-			?>
-      </table> 
+			echo "</table>";
+			*/
+			?> 
       </td>
-      <td width="84%" valign="top">
-      <iframe width="100%" height="100%" id="weekmeal" name="weekmeal" src="" style="border:none"></iframe>
+      <td width="84%" valign="top" height="100%">
+      <iframe width="100%" height="400" id="weekmeal" name="weekmeal" src="" style="border:none"></iframe>
       </td>
     </tr>
     </tbody>
