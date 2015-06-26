@@ -32,7 +32,7 @@ include('common.php');
 			$weeknum = date('W');
 			$yearnum = date('Y');
 			for($i = 0; $i < 10; $i ++){
-				echo "<li>";
+				echo "<li class='ui-menu-item'>";
 				echo "<a href='y=".$yearnum."&w=".($weeknum + $i)."'>";
 				echo $yearnum. ".".($weeknum + $i)." (";
 				$result = getStartAndEndDate($weeknum+$i, $yearnum);

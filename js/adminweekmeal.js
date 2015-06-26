@@ -7,6 +7,8 @@ $(document).ready(function(e) {
 	
 	$('a').attr('style','text-decoration:none');
 	$('#menu').menu({
-		inline: true,
 	});
+	
+	$('li').attr('style', 'padding: 8px;');
+	
 });

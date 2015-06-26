@@ -151,6 +151,18 @@ class DB
 		return $query;
 	}
 	
+	function getOrderMealByUserID($user_id, $start_date, $end_date){
+		$sql = "SELECT * FROM mealmanage_tbl m LEFT OUTER JOIN order_tbl o ON m.order_date=o.order_date AND o.user_id='$user_id' WHERE (m.order_date BETWEEN '$start_date', '$end_date')";
+		$query = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+		return $query;
+	}
+	
+	function getWeekOrderByUserID($user_id, $start_date, $end_date){
+		$sql = "SELECT * FROM order_tbl WHERE user_id='$user_id' AND (order_date BETWEEN '$start_date' AND '$end_date') ORDER BY order_date";
+		$query = mysqli_query($this->link, $sql) or die(mysqli_error($this->link));
+		return $query;
+	}
+	
 	function des_encrypt($string) {
     $size = mcrypt_get_block_size('des', 'ecb');
     $pad = $size - (strlen($string) % $size);
